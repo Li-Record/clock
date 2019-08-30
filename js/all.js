@@ -1,12 +1,13 @@
-window.addEventListener('load', function() {
+(function clock() {
     // 取出時針分針秒針
-    let hourHand = document.querySelector('.hourHand');
-    let minHand = document.querySelector('.miniuteHand');
-    let secHand = document.querySelector('.secondHand');
+    const hourHand = document.querySelector('.hourHand');
+    const minHand = document.querySelector('.miniuteHand');
+    const secHand = document.querySelector('.secondHand');
     // 取得目前時間
-    const nowTime = {};
+    
     const getTime = () => {
         let date = new Date();
+        const nowTime = {};
         nowTime.hour = date.getHours();
         nowTime.min = date.getMinutes();
         nowTime.sec = date.getSeconds();
@@ -18,5 +19,6 @@ window.addEventListener('load', function() {
         hourHand.setAttribute('style', 'transform: translateX(-50%) rotate(' + ((nowTime.hour * 30) + (nowTime.min * 0.5)) + 'deg)!important;');
     }
     // 每秒取得時間
+    getTime();
     setInterval(() => getTime(), 1000);
-})
+}())
